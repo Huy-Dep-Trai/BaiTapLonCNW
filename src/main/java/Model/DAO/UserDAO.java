@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public class UserDAO {
     public boolean checkIfUserIsExist(String username) throws  Exception{
+
         String query = "SELECT * FROM user WHERE username = '" + username + "'";
 
         ResultSet rs = DbHelper.getResultSet(query);
@@ -17,7 +18,9 @@ public class UserDAO {
     public ArrayList<User> getAllUsers() throws Exception {
         ArrayList<User> users = new ArrayList<>();
 
-        String query = "SELECT * FROM user";
+        String query = "SELECT user.password, userinfo.* " +
+                "FROM user INNER JOIN userinfo " +
+                "ON user.username = userinfo.username;";
         ResultSet rs = DbHelper.getResultSet(query);
 
         while(rs.next()){
@@ -38,7 +41,10 @@ public class UserDAO {
     public User getUserByUsername(String username) throws  Exception{
         User user = new User();
 
-        String query = "SELECT * FROM user WHERE username = '" + username + "'";
+        String query = "SELECT user.password, userinfo.* " +
+                "FROM user INNER JOIN userinfo " +
+                "ON user.username = userinfo.username " +
+                "WHERE user.username = '"+ username+ "';";
 
         ResultSet rs = DbHelper.getResultSet(query);
 
