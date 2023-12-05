@@ -23,8 +23,9 @@ public class UserDAO {
                 "ON user.username = userinfo.username;";
         ResultSet rs = DbHelper.getResultSet(query);
 
+        User user = new User();
+
         while(rs.next()){
-            User user = new User();
             user.setUsername(rs.getString("username"));
             user.setPassword(rs.getString("password"));
             user.setName(rs.getString("name"));

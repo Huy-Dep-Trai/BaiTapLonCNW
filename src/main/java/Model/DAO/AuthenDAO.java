@@ -1,17 +1,51 @@
 package Model.DAO;
 
+import DbHelper.DbHelper;
 import Model.BEAN.User;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 public class AuthenDAO {
-    public boolean checkLogin(String username, String password) throws Exception{
+    public boolean verifyLogin(String username, String password) throws Exception{
         UserDAO dao = new UserDAO();
 
         User user = dao.getUserByUsername(username);
 
-        if(user != null)
+        if(!user.getPassword().isEmpty())
         {
             return user.getPassword().equals(password);
         }
-        else return  false;
+        else return false;
+    }
+    public boolean registerAccount(User user){
+        UserDAO dao = new UserDAO();
+
+        int userAffected = 0, userInfoAffected = 0;
+
+        try{
+            if(dao.checkIfUserIsExist(user.getUsername())){
+                return false;
+            }
+            else{
+                Statement statement = null;
+
+                String addUserQuery = String.format("insert into user values ('%s', '%s')", user.getUsername(), user.getPassword());
+                String addUserInfo = String.format("insert into userinfo values('%s', '%s', '%d', '%s', '%s', '%d')", user.getUsername(), user.getName(), user.getAge(), user.isGender(), user.getUniveristy(), user.getRole());
+
+                statement = DbHelper.getConnection().createStatement();
+
+                userAffected = statement.executeUpdate(addUserQuery);
+                userInfoAffected = statement.executeUpdate(addUserInfo);
+
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return userAffected > 0 && userInfoAffected > 0;
+
     }
 }

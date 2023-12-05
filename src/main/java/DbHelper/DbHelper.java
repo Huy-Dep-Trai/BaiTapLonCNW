@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 public class DbHelper {
     private static Connection cnn;
-    static String url = "jdbc:mysql://localhost:3306/btth_laptrinhmang"; //link database
+    static String url = "jdbc:mysql://localhost:3306/bai_tap_lon_cnw"; //link database
     static String user = "root";
     static String password = "";
     public static Connection getConnection(){
@@ -38,6 +38,7 @@ public class DbHelper {
         catch (Exception e){
             e.printStackTrace();
         }
+
         return resultSet;
     }
 }

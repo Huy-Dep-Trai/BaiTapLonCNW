@@ -4,6 +4,7 @@ import Model.BEAN.User;
 import Model.DAO.UserDAO;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class UserBO {
     public ArrayList<User> getAllUsers(){
@@ -15,5 +16,17 @@ public class UserBO {
             e.printStackTrace();
         }
         return  users;
+    }
+
+    public User getUserByUsername(String username){
+        User user = new User();
+
+        try{
+            user = new UserDAO().getUserByUsername(username);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return  user;
     }
 }
