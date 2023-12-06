@@ -3,7 +3,10 @@ package Model.DAO;
 import DbHelper.DbHelper;
 import Model.BEAN.User;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class UserDAO {
@@ -63,5 +66,38 @@ public class UserDAO {
 
     public void AddOrUpdateUser(User userToDo) throws Exception{
 
+    }
+    
+    public boolean updateUserInfo(User user) throws Exception {
+        // Assuming 'username' is a primary key or unique identifier for a user
+
+        String updateQuery = "UPDATE userinfo " +
+                "SET name = ?, age = ?, gender = ?, university = ?, role = ? " +
+                "WHERE username = ?;";
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+            connection = DbHelper.getConnection();
+            preparedStatement = connection.prepareStatement(updateQuery);
+
+            preparedStatement.setString(1, user.getName());
+            preparedStatement.setInt(2, user.getAge());
+            preparedStatement.setBoolean(3, user.isGender());
+            preparedStatement.setString(4, user.getUniveristy());
+            preparedStatement.setInt(5, user.getRole());
+            preparedStatement.setString(6, user.getUsername());
+            System.out.println("call-------------------------DAO");
+            System.out.println(user.getUsername());
+            int rowsAffected = preparedStatement.executeUpdate();
+            if (rowsAffected == 0) {
+            	return false;
+                //throw new SQLException("Update failed, no rows affected.");
+            }
+            return true;
+        } finally {
+            
+        }
     }
 }

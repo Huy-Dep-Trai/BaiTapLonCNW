@@ -8,7 +8,7 @@ public class User {
     private  boolean gender;
     private String univeristy;
     private int role; //0 => user; 1 => admin
-
+    private String id_group;
 
     public String getUsername() {
         return username;
@@ -65,4 +65,12 @@ public class User {
     public void setRole(int role) {
         this.role = role;
     }
+
+	public String getId_group() {
+		return id_group;
+	}
+
+	public void setId_group(String id_group) {
+		this.id_group = id_group;
+	}
 }

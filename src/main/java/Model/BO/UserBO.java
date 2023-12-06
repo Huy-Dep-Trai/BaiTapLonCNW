@@ -29,4 +29,14 @@ public class UserBO {
         }
         return  user;
     }
+    
+    public boolean updateUserInfo(User user){
+    	UserDAO userDAO = new UserDAO();
+    	try {
+			return userDAO.updateUserInfo(user);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+    }
 }
