@@ -12,7 +12,6 @@
     if(httpSession == null || httpSession.getAttribute("Authenticated") == null || (Boolean)httpSession.getAttribute("Authenticated") == false){
         response.sendRedirect("login.jsp");
     }
-
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,9 +23,10 @@
 <nav>
     <ul>
         <li><a href="#">Trang Chủ</a></li>
-        <li><a href="#">Dịch Vụ</a></li>
-        <li><a href="#">Sản Phẩm</a></li>
-        <li><a href="#">Liên Hệ</a></li>
+        <li><a href="ListUser">Danh sách người dùng</a></li>
+        <li><a href="Profile">Profile</a></li>
+        <li><a href="UserManagement">Chỉnh sửa thông tin cá nhân</a></li>
+        <li><a href="GroupController">Group</a></li>
     </ul>
 </nav>
 

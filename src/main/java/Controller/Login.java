@@ -32,6 +32,7 @@ public class Login extends HttpServlet {
         }
         else{
             request.getSession().setAttribute("Authenticated", false);
+            request.getSession().setAttribute("User", null);
 
             RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/login.jsp");
             dispatcher.forward(request, response);
