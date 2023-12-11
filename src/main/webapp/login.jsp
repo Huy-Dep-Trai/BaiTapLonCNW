@@ -22,6 +22,15 @@
         </div>
         <button type="submit">Login</button>
     </form>
+    <%
+        if(request.getAttribute("register_success") != null && (boolean)request.getAttribute("register_success") == true){
+    %>
+        <div>Dang ki thanh cong</div>
+    <%
+        }
+    %>
+
+    <a href="Register">Đăng kí</a>
 </div>
 </body>
 <head>

@@ -3,10 +3,7 @@ package Model.DAO;
 import DbHelper.DbHelper;
 import Model.BEAN.User;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class UserDAO {
@@ -14,21 +11,29 @@ public class UserDAO {
 
         String query = "SELECT * FROM user WHERE username = '" + username + "'";
 
-        ResultSet rs = DbHelper.getResultSet(query);
+        try{
+            ResultSet rs = DbHelper.getResultSet(query);
 
-        return !rs.next();
+            return rs.next();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
     }
     public ArrayList<User> getAllUsers() throws Exception {
         ArrayList<User> users = new ArrayList<>();
 
         String query = "SELECT user.password, userinfo.* " +
                 "FROM user INNER JOIN userinfo " +
-                "ON user.username = userinfo.username;";
+                "ON user.username = userinfo.username " +
+                "WHERE userinfo.role = 0";
         ResultSet rs = DbHelper.getResultSet(query);
 
-        User user = new User();
+
 
         while(rs.next()){
+            User user = new User();
             user.setUsername(rs.getString("username"));
             user.setPassword(rs.getString("password"));
             user.setName(rs.getString("name"));
@@ -65,6 +70,36 @@ public class UserDAO {
     }
 
     public void AddOrUpdateUser(User userToDo) throws Exception{
+
+    }
+
+    public boolean deleteUser(String username){
+
+        int userAffected = 0, userInfoAffected = 0, userGroupAffected = 0;
+        try{
+            Statement statement = null;
+
+            String deleteUserInfoQuery = "DELETE FROM userinfo WHERE username = '" + username + "'";
+            String deleteUserQuery = "DELETE FROM user WHERE username = '" + username + "'";
+            String deleteUserGroup = "DELETE FROM user_group WHERE username = '" + username + "'";
+
+
+            statement = DbHelper.getConnection().createStatement();
+
+            userGroupAffected = statement.executeUpdate(deleteUserGroup);
+            userInfoAffected = statement.executeUpdate(deleteUserInfoQuery);
+            userAffected = statement.executeUpdate(deleteUserQuery);
+
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        if(userAffected > 0 && userInfoAffected > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
 
     }
     

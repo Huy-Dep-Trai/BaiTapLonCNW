@@ -13,7 +13,7 @@ public class AuthenDAO {
 
         User user = dao.getUserByUsername(username);
 
-        if(!user.getPassword().isEmpty())
+        if(user.getPassword() != null)
         {
             return user.getPassword().equals(password);
         }
@@ -32,7 +32,7 @@ public class AuthenDAO {
                 Statement statement = null;
 
                 String addUserQuery = String.format("insert into user values ('%s', '%s')", user.getUsername(), user.getPassword());
-                String addUserInfo = String.format("insert into userinfo values('%s', '%s', '%d', '%s', '%s', '%d')", user.getUsername(), user.getName(), user.getAge(), user.isGender(), user.getUniveristy(), user.getRole());
+                String addUserInfo = String.format("insert into userinfo values('%s', '%s', '%d', '%d', '%s', '%d')", user.getUsername(), user.getName(), user.getAge(), user.isGender() ? 1 : 0, user.getUniveristy(), user.getRole());
 
                 statement = DbHelper.getConnection().createStatement();
 
@@ -45,7 +45,10 @@ public class AuthenDAO {
             e.printStackTrace();
         }
 
-        return userAffected > 0 && userInfoAffected > 0;
+        if(userAffected > 0 && userInfoAffected > 0){
+            return true;
+        }
+        else return false;
 
     }
 }

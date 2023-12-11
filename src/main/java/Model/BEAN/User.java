@@ -10,6 +10,27 @@ public class User {
     private int role; //0 => user; 1 => admin
     private String id_group;
 
+    public User(){
+
+    }
+
+    public User(String username, String password, String name, int age, boolean gender, String univeristy, int role, String id_group) {
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+        this.univeristy = univeristy;
+        this.role = role;
+        this.id_group = id_group;
+    }
+
+    public User(String username, String password, String name) {
+        this.username = username;
+        this.password = password;
+        this.name = name;
+    }
+
     public String getUsername() {
         return username;
     }

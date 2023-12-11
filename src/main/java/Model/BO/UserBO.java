@@ -29,6 +29,18 @@ public class UserBO {
         }
         return  user;
     }
+
+    public boolean deleteUser(String username){
+        boolean success = false;
+        try{
+            success = new UserDAO().deleteUser(username);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return  false;
+        }
+        return success;
+    }
     
     public boolean updateUserInfo(User user){
     	UserDAO userDAO = new UserDAO();
