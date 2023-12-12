@@ -1,4 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
+<%@ page import="Model.BEAN.User" %>
 <html>
 <head>
     <title>User Profile</title>
@@ -7,16 +10,28 @@
     <h2>Xem hồ sơ người khác</h2>
     <form action="Profile" method="POST">
         <div>
-            <label for="username">Enter Username:</label>
-            <input type="text" id="username" name="username" required>
+            <label for="username">Select Username:</label>
+            <input list="usernames" id="username" name="username" required>
+            <datalist id="usernames">
+                <% 
+                    ArrayList<String> usernames = (ArrayList<String>) request.getAttribute("usernames");
+                    if (usernames != null) {
+                        for (String username : usernames) {
+                %>
+                <option value="<%= username %>">
+                <% 
+                        }
+                    }
+                %>
+            </datalist>
             <button type="submit">View Profile</button>
         </div>
     </form>
     <p>${responseMessage}</p> <!-- controller gửi thông báo sau khi submit thành công hoặc thất bại -->
     
     <% 
-	
-    	if (request.getAttribute("userToView") != null) { 
+    
+        if (request.getAttribute("userToView") != null) { 
     %>
 
     <h2>User Information</h2>
@@ -32,7 +47,7 @@
         <label>Gender:</label>
         <input type="radio" id="male" name="gender" value="true" ${userToView.isGender() ? 'checked' : ''} disabled>
         <label for="male">Male</label>
-		<input type="radio" id="male" name="gender" value="false" ${!userToView.isGender() ? 'checked' : ''} disabled>
+        <input type="radio" id="male" name="gender" value="false" ${!userToView.isGender() ? 'checked' : ''} disabled>
         <label for="female">Female</label>
     </div>
     <div>
