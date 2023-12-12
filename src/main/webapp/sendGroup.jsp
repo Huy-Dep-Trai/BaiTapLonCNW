@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page language="java"  import="Model.BEAN.User" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,9 +26,20 @@
 		<button class="req-button">Danh sách nhóm</button>
 	</form>
 	
-	<!-- Goi yeu cau xem danh sach nhom cua User hien tai vi du la user1 -->
-	<form action="GroupController?username=user1" method="POST">
-		<button class="req-button">Danh sách nhóm cua user 1</button>
-	</form>
+	<!-- Goi yeu cau xem danh sach nhom cua User hien tai -->
+	<% User user = (User)request.getSession().getAttribute("User"); %>
+<%
+    if (user != null) {
+%>
+        <form action="GroupController?username=<%= user.getUsername() %>" method="POST">
+            <button class="req-button">Danh sách nhóm cua user</button>
+        </form>
+<%
+    } else {
+%>
+        <p>User không tồn tại.</p>
+<%
+    }
+%>
 </body>
 </html>

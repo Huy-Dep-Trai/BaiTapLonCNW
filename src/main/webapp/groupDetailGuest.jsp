@@ -218,7 +218,7 @@ form {
  
  	
  	<div class="container">
- 	<h2>Danh sách thành viên</h2>
+ 	<h2>Thành viên của nhóm</h2>
 		<div class="row">
         <%
         ArrayList<User> listUser = (ArrayList<User>)request.getAttribute("listUser");
@@ -245,37 +245,6 @@ form {
  	 </div>
  	 </div>
  	 
- 	 <h2></h2>
- 	 <% User user = (User)request.getSession().getAttribute("User"); %>
- 	 
- 	 <div class="post">
- 	 	<div class="post-editor">
-        <div class="user-avatar">
-            <img src="<%= request.getContextPath() %>/image/avatar.jpg" alt="User Avatar">
-        </div>
-        <div class="post-input">
-            <input class="text" type="text" placeholder="<%= user.getName() %> ơi, bạn đang nghĩ gì?">
-        </div>
-    </div>
- 	 </div>
- 	 
- 	 <div class="new-post">
-        <div class="new-post-editor">
-            <div class="user-avatar">
-                <img src="<%= request.getContextPath() %>/image/avatar.jpg" alt="User Avatar">
-            </div>
-            <form action="GroupController" method="post">
-                <div class="post-input">
-                    <textarea name="post" id="" cols="30" rows="10" placeholder="<%= user.getName() %> ơi, bạn đang nghĩ gì?"></textarea>
-                </div>
-                <div class="button-post">
-                    <input type="submit" value="Đăng">
-                </div>
-                <input type="hidden" name="idgr" value="<%= request.getParameter("idgr") %>">
-            </form>
-        </div>
-    </div>
-    
     
   
 	<div class="container">
@@ -286,7 +255,7 @@ form {
             for (int i = 0; i < listPost.size(); i++) {
                 Group_User post = listPost.get(i);
                 
-                // Kiểm tra nếu post không rỗng thì mới hiển thị
+                
                 if (post.getPost() != null && !post.getPost().isEmpty()) {
             %>
                 <div class="section-post">
@@ -302,7 +271,7 @@ form {
                         <%= post.getPost() %>
                     </div>
                 </div>
-            <% } // Kết thúc điều kiện if %>
+            <% }  %>
             <% } %>
         </div>
     </div>

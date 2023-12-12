@@ -1,11 +1,11 @@
 package Model.BEAN;
 
 public class Group_User{
-    private String username;
-    private String id_group;
-    private String post;
-
-    public Group_User() {
+	private String username;
+	private String id_group;
+	private String post;
+	
+	public Group_User() {
     }
 
     public Group_User(String username, String id_group, String post) {

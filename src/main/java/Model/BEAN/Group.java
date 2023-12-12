@@ -4,8 +4,17 @@ public class Group {
     private String id_group;
     private String name_group;
     private int maximum_member;
+    private int current_member_amount;
     private String description;
     private int privacy;
+
+    public int getCurrent_member_amount() {
+        return current_member_amount;
+    }
+
+    public void setCurrent_member_amount(int current_member_amount) {
+        this.current_member_amount = current_member_amount;
+    }
 
     public String getId_group() {
         return id_group;
@@ -30,7 +39,7 @@ public class Group {
     public void setMaximum_member(int maximum_member) {
         this.maximum_member = maximum_member;
     }
-
+    
     public String getDescription() {
         return description;
     }

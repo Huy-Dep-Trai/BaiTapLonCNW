@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
      <%@ page language="java"  import="java.util.ArrayList" %>
      <%@ page language="java"  import="Model.BEAN.Group" %>
+     <%@ page language="java"  import="Model.BEAN.User" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -99,7 +100,7 @@
 </head>
 <body>
 	<div class="container">
-		<h2>Nhom cua ban</h2>
+		<h2>Nhóm của bạn</h2>
 		<div class="row">
         <%
         	ArrayList<Group> groupListJoined = (ArrayList<Group>)request.getAttribute("groupListJoined");
@@ -133,7 +134,7 @@
    </div>
    
    <div class="container">
-		<h2>Nhom chua tham gia</h2>
+		<h2>Nhóm chưa chưa tham gia</h2>
 		<div class="row">
         <%
         	ArrayList<Group> groupListNotJoin = (ArrayList<Group>)request.getAttribute("groupListNotJoin");
@@ -154,8 +155,15 @@
                     <div class="inner-desc">
                         <%= groupListNotJoin.get(i).getDescription() %>
                     </div>
+                    <% User user = (User)request.getSession().getAttribute("User"); %>
                     <div class="button button-one">
-                    	<a href="<%= request.getContextPath() %>/GroupController?idgr=<%= groupListNotJoin.get(i).getId_group() %>">THAM GIA</a>
+                    	<a href="<%= request.getContextPath() %>/GroupController?join_gr=<%= groupListNotJoin.get(i).getId_group() %>&user_join=<%= user.getUsername() %>">THAM GIA</a>
+                    	<!--  <form action="<%= request.getContextPath() %>/GroupController" method="POST">
+                    		<input type="hidden" name="user_join" value="<%= user.getUsername() %>">
+    						<input type="hidden" name="join_gr" value="<%= groupListNotJoin.get(i).getId_group() %>">
+    						<button type="submit">THAM GIA</button>
+						</form>-->
+                    	
                     </div>
                 </div>
             </div>
@@ -165,6 +173,15 @@
         %>
      </div>
    </div>
+   
+   <script type="text/javascript">
+   		<% Boolean join = (Boolean)request.getAttribute("join"); %>
+   		if(<%= join %>){
+   			setTimeout(() => {
+   				alert("Bạn đã tham gia nhóm thành công");
+   			}, 3000);
+   		}
+   </script>
    
    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
