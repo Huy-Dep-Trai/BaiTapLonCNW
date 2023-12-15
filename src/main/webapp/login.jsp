@@ -13,13 +13,13 @@
 <div class="container" id="container">
     <div class="form-container sign-up-container">
         <form action="Register" method="post" onsubmit="return validateForm()" >
-            <h1>Create Account</h1>
+            <h1>Đăng kí tài khoản mới</h1>
             <div class="social-container">
                 <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
                 <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
                 <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
             </div>
-            <span>or use your email for registration</span>
+            <span></span>
             <input type="text" name="username" placeholder="Username" required/>
             <input type="text" name="name" placeholder="Name" required/>
             <input type="password" id="password" name="password" placeholder="Password" required/>
