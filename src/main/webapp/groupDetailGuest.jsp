@@ -11,10 +11,40 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-cyborg-gaming.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
 <title>Trang chi tiet nhom</title>
 <style type="text/css">
-	.container{
-		
+	.inner-member .container{
+		padding: 60px;
+		background: #27292A;
+		border-radius: 15px;
+	}
+	
+	.inner-member h2{
+		margin-bottom: 30px;
+	}
+	
+	.inner-post .container{
+		padding: 60px;
+		background: #27292A;
+		border-radius: 15px;
+		margin-top: 30px;
+	}
+	
+	.inner-post .section-post{
+		padding: 30px 100px;
+		background: #1F2122;
+		border-radius: 14px;
+	}
+	
+	.inner-member{
+		margin-top: 200px;
 	}
 	
 	.inner-box{
@@ -159,6 +189,10 @@ form {
     margin-top: 50px;
 }
 
+.inner-post p {
+	color: white;
+}
+
 /* Style cho từng bài đăng */
 .post-item {
     display: flex;
@@ -215,10 +249,41 @@ form {
 </style>
 </head>
 <body>
- 
  	
- 	<div class="container">
- 	<h2>Thành viên của nhóm</h2>
+ 	<header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="index.html" class="logo">
+                        <img src="assets/images/logo.png" alt="">
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Search End ***** -->
+                    
+                    <!-- ***** Search End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                        
+                        <li><a href="UserManagement">Profile <img src="assets/images/profile-header.jpg" alt=""></a></li>
+                    </ul>   
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+  </header>
+ 	
+ 	<div class="inner-member">
+ 		<div class="container">
+            <div class="main-border-button" style="text-align: center" >
+                <a href="GroupController">Quay lại</a>
+            </div>
+ 	<h2>Members</h2>
 		<div class="row">
         <%
         ArrayList<User> listUser = (ArrayList<User>)request.getAttribute("listUser");
@@ -244,13 +309,16 @@ form {
  	
  	 </div>
  	 </div>
+ 	</div>
+ 	
  	 
     
   
-	<div class="container">
-    <h2>Group User Posts</h2>
+	<div class="inner-post">
+		<div class="container">
+    <h2>Group Posts</h2>
     <div class="row">
-        <div class="col-md-8 offset-md-2">
+        <div class="col-md-10 offset-md-1">
             <% ArrayList<Group_User> listPost = (ArrayList<Group_User>) request.getAttribute("listPost");
             for (int i = 0; i < listPost.size(); i++) {
                 Group_User post = listPost.get(i);
@@ -264,7 +332,7 @@ form {
                             <img src="<%= request.getContextPath() %>/image/avatar.jpg" alt="">
                         </div>
                         <div class="inner-name">
-                            <%= post.getUsername() %>
+                            <p><%= post.getUsername() %></p>
                         </div>
                     </div>
                     <div class="inner-post">
@@ -276,6 +344,7 @@ form {
         </div>
     </div>
 </div>
+	</div>
 	
     
  	

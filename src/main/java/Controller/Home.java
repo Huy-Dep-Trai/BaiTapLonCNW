@@ -13,6 +13,10 @@ import java.util.ArrayList;
 
 @WebServlet("/Home")
 public class Home extends HttpServlet {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doPost(request,response);
+
+    }
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         GroupBO bo = new GroupBO();
 

@@ -127,6 +127,10 @@
 	                      <h4>Tên: ${User.name}</h4>
 	                      <p>Trang chỉnh sửa thông tin cá nhân.</p>
 	                    </div>
+						  <br>
+						  <div class="main-border-button"  >
+							  <a href="Logout">Đăng xuất</a>
+						  </div>
 	                  </div>
 	                </div>
 	                <div class="row">

@@ -9,11 +9,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    HttpSession httpSession = request.getSession();
 
-    if(httpSession == null || httpSession.getAttribute("Authenticated") == null || (Boolean)httpSession.getAttribute("Authenticated") == false){
-        response.sendRedirect("login.jsp");
-    }
 %>
 
 <!DOCTYPE html>
@@ -24,7 +20,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <title>Cyborg - Awesome HTML5 Template</title>
+    <title>Group Management</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -76,7 +72,7 @@
                         <li><a href="ListUser">Users</a></li>
                         <li><a href="GroupController">Xem Groups</a></li>
                         <li><a href="#">Tạo Groups</a></li>
-                        <li><a href="Profile">Profile <img src="assets/images/profile-header.jpg" alt=""></a></li>
+                        <li><a href="UserManagement">Profile <img src="assets/images/profile-header.jpg" alt=""></a></li>
                     </ul>
                     <a class='menu-trigger'>
                         <span>Menu</span>

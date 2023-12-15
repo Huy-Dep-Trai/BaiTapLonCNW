@@ -4,9 +4,9 @@
   HttpSession httpSession = request.getSession();
 
   if(httpSession != null && httpSession.getAttribute("Authenticated") != null && (Boolean)httpSession.getAttribute("Authenticated") == true){
-    response.sendRedirect("home.jsp");
+    response.sendRedirect("Home");
   }
   else{
-    response.sendRedirect("login.jsp");
+    response.sendRedirect("Login");
   }
 %>

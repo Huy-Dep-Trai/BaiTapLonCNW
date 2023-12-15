@@ -13,6 +13,6 @@ public class Logout extends HttpServlet {
     {
         request.getSession().setAttribute("Authenticated", false);
         request.getSession().setAttribute("User", null);
-        response.sendRedirect("login.jsp");
+        response.sendRedirect("Login");
     }
 }

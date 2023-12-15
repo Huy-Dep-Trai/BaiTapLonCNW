@@ -11,10 +11,42 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-cyborg-gaming.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
 <title>Trang danh sach nhom</title>
 <style type="text/css">
-	.container{
-		padding: 80px;
+
+
+	.section-group h2{
+		margin-bottom: 25px;
+	}
+
+	.section-group .container{
+		padding: 60px;
+		background: #27292A;
+		border-radius: 15px;
+	}
+	
+	.section-group2 .container{
+		padding: 60px;
+		background: #27292A;
+		border-radius: 15px;
+	}
+	
+	.section-group{
+		margin-top: 150px;
+	}
+	
+	.section-group2{
+		margin-top: 50px;
+	}
+	
+	.section-group2 h2{
+		margin-bottom: 25px;
 	}
 
     .box-head {
@@ -53,14 +85,15 @@
     margin-top: 15px;
     text-align: center;
  }
-	 .inner-content .inner-title {
+		 .inner-content .inner-title {
     margin-bottom: 10px;
     font-size: 20px;
-    color: black;
+    color: white;
  }
   .inner-content .inner-title a {
     text-decoration: none;
-    color: black;
+    color: white;
+    font-weight: 600;
  }
  
   .inner-content .inner-title a:hover {
@@ -70,6 +103,11 @@
   .inner-content .inner-desc {
     font-size: 13px;
     margin-bottom: 20px;
+ }
+ 
+ .inner-content .inner-desc p {
+ 	color: white;
+ 	font-size: 13px;
  }
 
   .button {
@@ -82,24 +120,57 @@
 }
 
 .button-one {
-    background-color: #8261EE;
+    background-color: #EC6090;
     color: white;
 }
 
 .button-one:hover {
-    background-color: #FF589E;
-    color: white;
+    background-color: white;
+    color: #EC6090;
 }
 
 .button a{
 	color: white;
 	text-decoration: none;
 }
+
+.button:hover a {
+    color: #EC6090;
+}
 </style>
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="container">
+	<header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="index.html" class="logo">
+                        <img src="assets/images/logo.png" alt="">
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Search End ***** -->
+                    
+                    <!-- ***** Search End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                        
+                        <li><a href="profile.html">Profile <img src="assets/images/profile-header.jpg" alt=""></a></li>
+                    </ul>   
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+  </header>
+
+	<div class="section-group">
+		<div class="container">
 		<h2>Nhóm của bạn</h2>
 		<div class="row">
         <%
@@ -119,7 +190,7 @@
                         </a>
                     </div>
                     <div class="inner-desc">
-                        <%= groupListJoined.get(i).getDescription() %>
+                        <p><%= groupListJoined.get(i).getDescription() %></p>
                     </div>
                     <div class="button button-one">
                     	<a href="<%= request.getContextPath() %>/GroupController?idgr=<%= groupListJoined.get(i).getId_group() %>">XEM NHÓM</a>
@@ -132,8 +203,11 @@
         %>
      </div>
    </div>
+	</div>
+	
    
-   <div class="container">
+   <div class="section-group2">
+   		<div class="container">
 		<h2>Nhóm chưa chưa tham gia</h2>
 		<div class="row">
         <%
@@ -153,7 +227,7 @@
                         </a>
                     </div>
                     <div class="inner-desc">
-                        <%= groupListNotJoin.get(i).getDescription() %>
+                        <p><%= groupListNotJoin.get(i).getDescription() %></p>
                     </div>
                     <% User user = (User)request.getSession().getAttribute("User"); %>
                     <div class="button button-one">
@@ -172,6 +246,7 @@
             }}
         %>
      </div>
+   </div>
    </div>
    
    <script type="text/javascript">
