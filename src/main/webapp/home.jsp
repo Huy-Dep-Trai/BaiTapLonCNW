@@ -70,9 +70,36 @@
                     <ul class="nav">
                         <li><a href="index.jsp" class="active">Trang chủ</a></li>
                         <li><a href="ListUser">Users</a></li>
-                        <li><a href="GroupController">Xem Groups</a></li>
+                        <%
+                            User usertmp = (User) request.getSession().getAttribute("User");
+                            if (request.getSession() != null && usertmp != null) {
+                        %>
+                        <li>
+                            <a href="GroupController?username=<%= usertmp.getUsername() %>">Groups</a>
+                        </li>
+                        <%
+                        }
+                        else {
+                        %>
+                        <li><a href="GroupController">Groups</a></li>
+                        <%
+                            }
+                        %>
                         <li><a href="#">Tạo Groups</a></li>
-                        <li><a href="UserManagement">Profile <img src="assets/images/profile-header.jpg" alt=""></a></li>
+                        <%
+                            if(session != null && session.getAttribute("Authenticated") != null && (boolean)session.getAttribute("Authenticated")){
+                        %>
+<%--                        Đăng nhập rồi--%>
+                            <li><a href="UserManagement">Profile <img src="assets/images/profile-header.jpg" alt=""></a></li>
+                        <%
+                            }
+                            else{
+                        %>
+<%--                        Chưa đăng nhập--%>
+                            <li><a href="Login">Đăng nhập <img src="assets/images/profile-header.jpg" alt=""></a></li>
+                        <%
+                            }
+                        %>>
                     </ul>
                     <a class='menu-trigger'>
                         <span>Menu</span>

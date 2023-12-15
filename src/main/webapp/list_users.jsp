@@ -64,6 +64,7 @@
         <div class="main-border-button" style="text-align: center" >
             <a href="Home">Về trang chủ</a>
         </div>
+
         <h2>${delete_success == true ? "Xoa thanh cong" : ""}</h2>
                 <%
                     if(request.getAttribute("list") != null) {

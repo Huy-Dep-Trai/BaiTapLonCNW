@@ -91,7 +91,7 @@
 	                    <!-- ***** Search End ***** -->
 	                    <!-- ***** Menu Start ***** -->
 	                    <ul class="nav">
-	                        <li><a href="#" >Trang chủ</a></li>
+	                        <li><a href="Home" >Trang chủ</a></li>
 	                        <li><a href="ListUser">Users</a></li>
 	                        <li><a href="GroupController">Xem Groups</a></li>
 	                        <li><a href="#">Tạo Groups</a></li>

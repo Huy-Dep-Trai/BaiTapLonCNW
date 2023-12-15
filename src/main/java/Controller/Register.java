@@ -14,7 +14,7 @@ import java.io.IOException;
 @WebServlet("/Register")
 public class Register extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
-        req.getRequestDispatcher("register.jsp").forward(req, res);
+        req.getRequestDispatcher("login.jsp").forward(req, res);
     }
 
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -34,7 +34,7 @@ public class Register extends HttpServlet {
         }
         else{
             req.setAttribute("register_success", false);
-            req.getRequestDispatcher("register.jsp").forward(req, res);
+            req.getRequestDispatcher("login.jsp").forward(req, res);
         }
     }
 }
